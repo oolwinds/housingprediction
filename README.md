@@ -1,5 +1,8 @@
 # House Price Prediction
 
+### Problem Statement
+Create a predictive model to estimate the median value of owner-occupied homes in the Boston area using a variety of features, including crime rate, education (pupil-teacher ratio), accessibility to employment centers (average commuting distance), and socioeconomic factors (percent of lower-status population). This model enables potential buyers and sellers to make informed decisions when entering the housing market and helps policymakers identify areas for improvement within the urban landscape.
+
 ### **The house prices prediction webapp can be accessed by clicking [here!](https://housingprediction.onrender.com/)**
 
 ### Technologies Used
