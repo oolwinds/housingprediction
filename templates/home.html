@@ -14,7 +14,7 @@
     body {
       font-family: 'Montserrat', sans-serif;
       background-color: #f8f9fa;
-      font-size: 14px; 
+    }
 
     .container {
       max-width: 800px;
@@ -28,21 +28,23 @@
     h1 {
       text-align: center;
       margin-bottom: 30px;
+      font-size: 2.5rem;
     }
 
     .welcome-text {
       text-align: center;
       margin-bottom: 30px;
+      font-size: 1.2rem;
     }
 
     form .form-group {
-      margin-bottom: 10px; 
+      margin-bottom: 10px;
     }
 
     .btn-submit {
       width: 100%;
-      font-size: 14px; 
-      padding: 10px 0; 
+      font-size: 14px;
+      padding: 10px 0;
     }
 
     .prediction-text {
@@ -54,7 +56,7 @@
     .social-links {
       text-align: center;
       margin-top: 30px;
-      font-size: 14px; 
+      font-size: 14px;
     }
 
     .social-links a {
@@ -62,55 +64,43 @@
       margin: 0 10px;
       font-size: 20px;
     }
-
-    /* Responsive design for smaller screens */
-    @media screen and (max-width: 768px) {
-      .btn-submit {
-        font-size: 12px;
-        padding: 8px 0;
-      }
-
-      .social-links {
-        font-size: 12px;
-      }
-    }
-</style>
+  </style>
 </head>
 
 <body>
   <div class="container">
     <h1>Boston House Price Prediction</h1>
     <p class="welcome-text">
-      Welcome to the Boston House Price Prediction tool! This application uses a machine learning model trained on the Boston Housing dataset to predict the price of a house based on its features. Enter the required information and let our model provide you with an estimated price. Please note that this is just an estimation and actual prices may vary.
+      Welcome to the House Price Prediction tool! This application uses a machine learning model trained on the Boston Housing dataset to predict the price of a house based on its features. Enter the required information and let our model provide you with an estimated price. Please note that this is just an estimation and actual prices may vary.
     </p>
 
-    <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}" method="post">
-      {% for field in ['CRIM', 'INDUS', 'NOX', 'RM', 'Age', 'DIS', 'RAD', 'TAX', 'PTRATIO', 'B', 'LSTAT'] %}
-      <div class="form-group">
-        <label for="{{field}}">{{field}}</label>
-        <input type="text" class="form-control" id="{{field}}" name="{{field}}" placeholder="{{field}}" required>
+      <!-- Main Input For Receiving Query to our ML -->
+      <form action="{{ url_for('predict')}}" method="post">
+        {% for field in ['CRIM', 'INDUS', 'NOX', 'RM', 'Age', 'DIS', 'RAD', 'TAX', 'PTRATIO', 'B', 'LSTAT'] %}
+        <div class="form-group">
+          <label for="{{field}}">{{field}}</label>
+          <input type="text" class="form-control" id="{{field}}" name="{{field}}" placeholder="{{field}}" required>
+        </div>
+        {% endfor %}
+
+        <button type="submit" class="btn btn-primary btn-submit">Predict</button>
+      </form>
+
+      <div class="prediction-text">
+        {{prediction_text}}
       </div>
-      {% endfor %}
 
-      <button type="submit" class="btn btn-primary btn-submit">Predict</button>
-    </form>
-
-    <div class="prediction-text">
-      {{prediction_text}}
-    </div>
-
-    <div class="social-links">
-      <p>Find me on:</p>
-      <a href="https://www.linkedin.com/in/oolwinds111/" target="_blank" rel="noopener noreferrer">
-        <i class="fa fa-linkedin"></i> LinkedIn
-      </a>
-      <a href="https://github.com/oolwinds" target="_blank" rel="noopener noreferrer">
-        <i class="fa fa-github"></i> GitHub
-      </a>
+      <div class="social-links">
+        <p>Find me on:</p>
+        <a href="https://www.linkedin.com/in/oolwinds111/" target="_blank" rel="noopener noreferrer">
+          <i class="fa fa-linkedin"></i> LinkedIn
+        </a>
+        <a href="https://github.com/oolwinds" target="_blank" rel="noopener noreferrer">
+          <i class="fa fa-github"></i> GitHub
+        </a>
+      </div>
     </div>
   </div>
 </body>
 
 </html>
-
