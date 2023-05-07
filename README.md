@@ -26,6 +26,8 @@ When I started this project, my first step was to dive into the dataset using Ju
 
 ![metrics](https://user-images.githubusercontent.com/130780065/236687756-dade5d12-b4fe-4da1-af69-0098602c61fd.JPG)
 
+![download](https://user-images.githubusercontent.com/130780065/236688543-65b436a2-296e-45d9-a60a-3952176e03dc.png)
+
 ### VSCode
 For this project, I decided to use VSCode as my code editor. To manage project dependencies and ensure reproducibility, I created a Python virtual environment.
 
