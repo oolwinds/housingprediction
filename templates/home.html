@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ML API</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arimo', sans-serif;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .btn-submit {
+            width: 100%;
+        }
+
+        .result {
+            margin-top: 30px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .filler-text {
+            margin-top: 40px;
+            text-align: justify;
+        }
+
+        .placeholder-image {
+            max-width: 100%;
+            margin-top: 40px;
+            border-radius: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>Boston House Price Prediction</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-container">
+                    <!-- Main Input For Receiving Query to our ML -->
+                    <form action="{{ url_for('predict')}}" method="post">
+                        {% for field in ['CRIM', 'INDUS', 'NOX', 'RM', 'Age', 'DIS', 'RAD', 'TAX', 'PTRATIO', 'B', 'LSTAT'] %}
+                        <div class="form-group">
+                            <label for="{{field}}">{{field}}</label>
+                            <input type="text" name="{{field}}" id="{{field}}" class="form-control" placeholder="{{field}}" required="required">
+                        </div>
+                        {% endfor %}
+                        <button type="submit" class="btn btn-primary btn-block btn-large btn-submit">Predict</button>
+                    </form>
+                    <div class="result">
+                        {{prediction_text}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <p class="filler-text">
+                  Welcome to the Boston House Price Prediction tool! This application uses a machine learning model trained on the Boston Housing dataset to predict the price of a house based on its features. Enter the required information and let our model provide you with an estimated price. Please note that this is just an estimation and actual prices may vary.
